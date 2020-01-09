@@ -1,0 +1,144 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    width: 85%;
+    /* background-color: red; */
+    /* display: flex; */
+    /* justify-content: center; */
+}
+h1{
+    font-weight: 600;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    color: #acaaaa;
+}
+p{
+    margin: 0;
+    width: 60%;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 11pt;
+    color: #8a8888;
+}
+form{
+    margin: 80px 0px;
+}
+#item{
+    display: block;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+    padding: .75rem;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1;
+    margin-top: 20px;
+}
+input[type=text]:focus{
+    border: 1px solid #0366ee;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.1), 0 0 6px #8cbcfe;
+}
+label, h2{
+    font-size: 11pt;
+    font-weight: bold;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+    line-height: 1.2;
+    color: #acaaaa;
+}
+
+.ctn-title{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.ctn-title i{
+    color: #acaaaa;
+    margin-right: 15px;
+}
+
+.row{
+    background: #f5f2f2;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+.row:hover{
+    background: #e7e5e5;
+}
+button{
+    cursor: pointer;
+    width: 150px;
+    padding: 6px 0px;
+    margin: 0px 2px;
+}
+.remove, .see{
+    border: 2px solid #afadad;
+    background: white;
+    border-radius: 5px;
+    color: #8d8c8c;
+    transition: 0.2s;
+}
+.remove:hover, .see:hover{
+    border: 2px solid #dddcdc;
+    background: #8d8c8c;
+    color: white;
+}
+#msg-no-items{
+    color: #a8a7a7;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 9pt;
+    text-indent: 50px;
+    display: none;
+}
+
+.btn-clear-all{
+    border: none ;
+    border-radius: 5px;
+    background: #cac9c9;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 50px;
+    transition: 0.2s;
+}
+.btn-clear-all i{
+    font-size: 10pt;
+    padding-right: 10px;
+}
+.hover-btn-clear-all:hover{
+    border: 2px solid #dddcdc;
+    background: white;
+    color: #8d8c8c;
+}
+::placeholder{
+    font-size: 10pt;
+}
+#input-search {
+    width: 30%;
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+  
+@media only screen and (max-width: 1010px) {
+
+    .row{
+        display: block;
+    }
+    .remove, .see{
+        margin-top: 10px;
+        width: 100px;
+    }
+    #input-search {
+        width: 70%;
+    }
+}
