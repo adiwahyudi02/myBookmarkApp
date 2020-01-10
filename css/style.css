@@ -13,10 +13,11 @@ h1{
     font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
     line-height: 1.2;
     color: #acaaaa;
+    margin-bottom: 100px;
 }
 p{
     margin: 0;
-    width: 60%;
+    width: 35%;
     font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 11pt;
     color: #8a8888;
@@ -24,7 +25,7 @@ p{
 form{
     margin: 80px 0px;
 }
-#item{
+#url, #title{
     display: block;
     border: 1px solid #cdcdcd;
     border-radius: 4px;
@@ -74,6 +75,10 @@ label, h2{
 .row:hover{
     background: #e7e5e5;
 }
+.col{
+    width: 60%;
+    display: flex;
+}
 button{
     cursor: pointer;
     width: 150px;
@@ -121,12 +126,35 @@ button{
 ::placeholder{
     font-size: 10pt;
 }
+.btn-create{
+    border: none ;
+    border-radius: 5px;
+    background: #cac9c9;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    transition: 0.2s;
+}
+.hover-btn-create:hover{
+    border: 2px solid #dddcdc;
+    background: white;
+    color: #8d8c8c;
+}
+.btn-create i{
+    font-size: 10pt;
+    padding-right: 10px;
+}
 #input-search {
     width: 30%;
     font-size: 16px;
     padding: 10px 20px 10px 20px;
     border: 1px solid #ddd;
     margin-bottom: 30px;
+}
+
+small{
+    color: #8a8888;
 }
   
 @media only screen and (max-width: 1010px) {
@@ -135,10 +163,13 @@ button{
         display: block;
     }
     .remove, .see{
-        margin-top: 10px;
         width: 100px;
     }
     #input-search {
         width: 70%;
+    }
+    .col{
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
