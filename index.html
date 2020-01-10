@@ -17,15 +17,26 @@
                 <h1>My Bookmark App</h1>
             </div>  
 
-            <form>
+            <div>
                 <div class="ctn-title">
                     <i class="fas fa-plus"></i>
-                    <label for="item">
+                    <label for="title">
                         Create new bookmark
                     </label>
                 </div>
-                <input id="item" type="text" placeholder="Press enter to submit" autocomplete="off">
-            </form>
+
+                <div>
+                    <input id="title" type="text" placeholder="Enter a title ..." autocomplete="off">
+                </div>
+
+                <div>
+                    <input id="url" type="url" placeholder="Enter a url ..." autocomplete="off">
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-create hover-btn-create" onclick="save()"><i class="fas fa-plus"></i>Create</button>
+                </div>
+            </div>
 
             <div class="ctn-title">
                 <i class="far fa-bookmark"></i>
@@ -33,14 +44,14 @@
             </div>
 
             <div>
-                <input type="text" id="input-search" onkeyup="search()" placeholder="Search for link.." title="Type in a link">
+                <input type="text" id="input-search" onkeyup="search()" placeholder="Search for title.." title="Type in a link">
             </div>
             
             <h5 id="msg-no-items"> You don't have a bookmark..</h5>
 
             <div id="bookmark-list"></div>
 
-            <button class="btn-clear-all hover-btn-clear-all"><i class="far fa-trash-alt"></i>Remove All</button>
+            <button class="btn-clear-all hover-btn-clear-all" id="btn-clear-all"><i class="far fa-trash-alt"></i>Remove All</button>
 
         </div>
   </div>
