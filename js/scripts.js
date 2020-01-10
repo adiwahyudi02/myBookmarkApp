@@ -1,14 +1,15 @@
 const ctn = document.getElementById('bookmark-list');
 const form = document.querySelector('form');
 const msg_no_items = document.getElementById('msg-no-items');
-const button = document.querySelector('button');
+const button = document.getElementById('btn-clear-all');
 const inputSearch = document.getElementById('input-search');
-const input = document.getElementById('item');
+const inputTitle = document.getElementById('title');
+const inputUrl = document.getElementById('url');
+
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
 localStorage.setItem('items', JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem('items'));
-
 
 if(itemsArray.length == 0){
   button.disabled = true;
@@ -32,17 +33,25 @@ const liMaker = (text, index) => {
   row.className = 'row';
   ctn.appendChild(row);
 
-  const link = document.createElement('p');
-  link.textContent = text;
-  link.setAttribute("id", "paragraph-" + index);
-  row.appendChild(link);
+  const col = document.createElement('div');
+  col.className = 'col';
+  row.appendChild(col);
+
+  const title = document.createElement('p');
+  title.textContent = text.title;
+  title.setAttribute("id", "paragraph-" + index);
+  col.appendChild(title);
+
+  const url = document.createElement('small');
+  url.textContent = text.url;
+  col.appendChild(url);
 
   const ctn_btn = document.createElement('div');
   ctn_btn.className = 'ctn-btn';
   row.appendChild(ctn_btn);
 
   const see_link = document.createElement('a');
-  see_link.setAttribute('href',text);
+  see_link.setAttribute('href',text.url);
   see_link.setAttribute('target','_blank');
   ctn_btn.appendChild(see_link);
 
@@ -62,19 +71,46 @@ const liMaker = (text, index) => {
   
 }
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
 
+function validURL(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return !!pattern.test(str);
 
-  if(input.value == ''){
-    alert('field cannot be empty !')
+}
+
+function save() {
+
+  if(inputTitle.value == ''){
+    alert('field title cannot be empty !')
+  }
+  else if(inputUrl.value == ''){
+    alert('field url cannot be empty !')
+  }
+  else if(!validURL(inputUrl.value)){
+    alert('Enter the correct URL!')
   }
   else{
 
-    itemsArray.push(input.value);
+    var items = {
+      'title': inputTitle.value, 'url': inputUrl.value
+    }
+
+    itemsArray.push(items);
+
     localStorage.setItem('items', JSON.stringify(itemsArray));
-    liMaker(input.value, itemsArray.length - 1);
-    input.value = "";
+
+    itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+
+    liMaker(items, itemsArray.length - 1);
+
+    inputTitle.value = "";
+    inputUrl.value = "";
 
     if(itemsArray.length != 0){
       button.disabled = false;
@@ -90,7 +126,7 @@ form.addEventListener('submit', function (e) {
     }
   }
 
-});
+};
 
 function unbookmark(key){
 
